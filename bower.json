@@ -1,0 +1,24 @@
+{
+  "name": "mostafa-rating",
+  "version": "0.0.0",
+  "homepage": "https://github.com/alireza-saberi/rating-HEC",
+  "authors": [
+    "Ali <saberi.ar.eng@gmail.com>"
+  ],
+  "description": "A rating system for Mostafa Purmehdi; my friend in HEC MOntreal",
+  "keywords": [
+    "rating",
+    "HEC"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "angular-bootstrap": "~0.13.4"
+  }
+}
