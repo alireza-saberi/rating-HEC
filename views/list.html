@@ -1,0 +1,32 @@
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="jumbotron">
+      <div class="container">
+        <h1 class="text-center">Candidates!</h1>
+      </div>
+    </div>
+    <div class="container">
+        <table class="table" data-ng-controller="candidatescontroller">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Overall Rate</th>
+              <th>Action</th>
+              <th>&nbsp;</th>
+            </tr>
+          </thead>
+          <tbody class="table-striped table-hover">
+            <tr>
+              <td><input type="text" class="form-control"></td>
+              <td>&nbsp;</td>
+              <td><button class="btn btn-primary">Add Candidate</button></td>
+              <td><button class="btn btn-info">Update</button></td>
+            </tr>
+            <tr data-ng-repeat="candidate in candidateList">
+              <td><a href="#/candidate/{{$index}}">{{candidate.name}}</a></td>
+              <td>{{candidate.overAllRate}}</td>
+              <td><button class="btn btn-danger">Remove</button></td>
+              <td><button class="btn btn-warning">Edit</button></td>
+            </tr>
+          </tbody>
+        </table>
+    </div>

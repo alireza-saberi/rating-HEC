@@ -19,6 +19,7 @@
     "tests"
   ],
   "devDependencies": {
-    "angular-bootstrap": "~0.13.4"
+    "angular-bootstrap": "~0.13.4",
+    "angular-route": "~1.4.7"
   }
 }
