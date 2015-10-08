@@ -9,6 +9,15 @@
 
 }
 
+.color-yellow {
+	color: yellow;
+
+}
+
+.glyphicon {
+    font-size: 25px;
+}
+
 hr {
 	background-color: violet;
 	height: 2px;
@@ -21,7 +30,10 @@ hr {
 	margin: 0 auto;
 }
 
+.nav, .pagination, .carousel, .panel-title a { 
+	cursor: pointer; 
 
+}
 
 
 

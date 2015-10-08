@@ -16,20 +16,29 @@
           <tbody class="table-striped table-hover">
             <tr>
               <td>Iman</td>
-              <td>3</td>
+              <td><rating ng-model="candide.subrates.item1" max="7" on-hover="hoveringOver(value)" on-leave="overStar = null" titles="['-3','-2','-1', '0', '1', '2', '3']" class="color-yellow"></rating></td>
             </tr>
             <tr>
               <td>Taghva</td>
-              <td>3</td>
+              <td>
+                <rating ng-model="candide.subrates.item2" max="7" on-hover="hoveringOver(value)" on-leave="overStar = null" titles="['-3','-2','-1', '0', '1', '2', '3']" class="color-yellow"></rating>
+              </td>
             </tr>
             <tr>
               <td>Akhlagh</td>
-              <td>3</td>
+              <td>
+                <rating ng-model="candide.subrates.item3" max="7" on-hover="hoveringOver(value)" on-leave="overStar = null" titles="['-3','-2','-1', '0', '1', '2', '3']" class="color-yellow"></rating>
+              </td>
             </tr>
             <tr>
               <td>Tokhm</td>
-              <td>3</td>
+              <td>
+                <rating ng-model="candide.subrates.item4" max="7" on-hover="hoveringOver(value)" on-leave="overStar = null" titles="['-3','-2','-1', '0', '1', '2', '3']" class="color-yellow"></rating>
+              </td>
             </tr>                                
           </tbody>
         </table>
+      <button class="btn btn-primary">Upload Image</button>
+      <a href="#/"><button class="btn btn-danger">Cancel</button></a>
+      <a href="#/"><button class="btn btn-success" data-ng-click="save()">Submit</button></a>
     </div>

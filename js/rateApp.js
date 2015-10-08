@@ -1,6 +1,6 @@
 "use strict";
 (function(){
-	var app = angular.module('ratingApp', ['ngRoute']);
+	var app = angular.module('ratingApp', ['ngRoute', 'ui.bootstrap']);
 	app.config(function($routeProvider){
 		$routeProvider
 		.when('/', {
