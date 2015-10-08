@@ -6,14 +6,20 @@
 
 .color-violet {
 	color: violet;
+
 }
 
 hr {
 	background-color: violet;
 	height: 2px;
 	border: none;
+
 }
 
+.center {
+	display: block;
+	margin: 0 auto;
+}
 
 
 
