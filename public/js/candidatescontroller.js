@@ -1,12 +1,13 @@
 "use strict";
 (function(){
-	var candidatescontroller = function($rootScope, $scope){
-		$rootScope.candidateList = [
-		{name:'Ali Saberi', overAllRate: 7, subrates:{item1:1, item2:2, item3:3, item4:4}},
-		{name:'Mostafa Purmehdi', overAllRate: 5, subrates:{item1:3, item2:3, item3:3, item4:3}},
-		{name:'Sina Sheikh', overAllRate: 2, subrates:{item1:3, item2:3, item3:3, item4:3}},
-		{name:'Mirza Abbass', overAllRate: 0, subrates:{item1:3, item2:3, item3:3, item4:3}}
-		];
+	var candidatescontroller = function($rootScope, $scope, $http){
+		$http.get('/contactlist').success(function(data){
+			console.log(data);
+			$rootScope.candidateList = data;
+
+		}).error(function(){
+			console.log("Can not reach the server");
+		});
 		$scope.hoveringOver = function(value) {
 			    $scope.overStar = value;
 			    $scope.percent = 100 * (value / 7);
@@ -21,6 +22,6 @@
 
 	};
 
-	candidatescontroller.$inject = ['$rootScope', '$scope'];
+	candidatescontroller.$inject = ['$rootScope', '$scope', '$http'];
 	angular.module('ratingApp').controller('candidatescontroller', candidatescontroller);
 }());
