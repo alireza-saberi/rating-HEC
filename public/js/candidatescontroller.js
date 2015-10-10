@@ -1,13 +1,14 @@
 "use strict";
 (function(){
 	var candidatescontroller = function($rootScope, $scope, $http){
-		$http.get('/contactlist').success(function(data){
+		var refresh = function(){$http.get('/contactlist').success(function(data){
 			console.log(data);
 			$rootScope.candidateList = data;
 
 		}).error(function(){
 			console.log("Can not reach the server");
-		});
+		})};
+		refresh();
 		$scope.hoveringOver = function(value) {
 			    $scope.overStar = value;
 			    $scope.percent = 100 * (value / 7);
