@@ -3,7 +3,6 @@
 	var candidatescontroller = function($rootScope, $scope, $http){
 		//geting data related codes
 		var refresh = function(){$http.get('/condidateslist').success(function(data){
-			console.log(data);
 			$rootScope.candidateList = data;
 
 		}).error(function(){
@@ -13,7 +12,7 @@
 
 		$scope.addCandide = function(){
 			var newCandidate = {};
-			newCandidate.name = $scope.newCandidate.name;
+			newCandidate.name = $scope.newCandidateName;
 			newCandidate.overAllRate = 0;
 			newCandidate.subrates = {item1 : 0, item2 : 0, item3 : 0, item4:0};
 			$http.post('/condidateslist', newCandidate).success(function(res){
@@ -31,6 +30,11 @@
 		  }).error(function(err){
 		  	console.log('Sorry, something wrong happened when deleting a new candide');
 		  });
+		};
+
+		//editing candidate
+		$scope.editCandide = function(id){
+			$scope.newCandidateName = $rootScope.candidateList[id].name;
 		};
 
 		//rating related codes
