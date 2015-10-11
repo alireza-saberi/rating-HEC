@@ -20,8 +20,17 @@
 				console.log(res);
 				refresh();
 			}).error(function(err){
-				console.log('Sorry, something wrong happened when adding new candide');
+				console.log('Sorry, something wrong happened when adding a new candide');
 			});
+		};
+
+		// removing a candiate
+		$scope.removeCandide = function(id) {
+		  $http.delete('/condidateslist/' + id).success(function(response) {
+		    refresh();
+		  }).error(function(err){
+		  	console.log('Sorry, something wrong happened when deleting a new candide');
+		  });
 		};
 
 		//rating related codes

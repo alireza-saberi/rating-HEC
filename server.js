@@ -33,6 +33,16 @@ app.post('/condidateslist', function (req, res) {
   // res.json(doc);
   });
 
+app.delete('/condidateslist/:id', function (req, res) {
+  var id = req.params.id;
+  candidateList.splice(id, 1);
+  console.log(candidateList);
+  res.json(candidateList);
+  // db.contactlist.remove({_id: mongojs.ObjectId(id)}, function (err, doc) {
+  //   res.json(doc);
+  // });
+});
+
 app.listen(port, function(){
 	console.log("Server is listening at the port: " + port);
 });
