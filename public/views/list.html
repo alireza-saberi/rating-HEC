@@ -16,9 +16,9 @@
           </thead>
           <tbody class="table-striped table-hover">
             <tr>
-              <td><input type="text" class="form-control"></td>
+              <td><input type="text" class="form-control" data-ng-model="newCandidate.name"></td>
               <td>&nbsp;</td>
-              <td><button class="btn btn-primary">Add Candidate</button></td>
+              <td><button class="btn btn-primary" data-ng-click="addCandide()">Add Candidate</button></td>
               <td><button class="btn btn-info">Update</button></td>
             </tr>
             <tr data-ng-repeat="candidate in candidateList">
