@@ -15,7 +15,22 @@ candidateList = [
 app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.json());
 
+// update has problem
+app.put('/condidateslist/:indx', function (req, res) {
+	console.log('I received a PUT request');
+  var index = req.params.indx;
+  console.log(req.body.name);
+  candidateList[index].name = req.body.name;
+  res.json(candidateList);
+ //  db.contactlist.findAndModify({
+ //    query: {_id: mongojs.ObjectId(id)},
+ //    update: {$set: {name: req.body.name, email: req.body.email, number: req.body.number}},
+ //    new: true}, function (err, doc) {
+ //      res.json(doc);
+ //    }
+  // );
 
+});
 app.get('/condidateslist', function (req, res) {
   console.log('I received a GET request');
   res.json(candidateList);

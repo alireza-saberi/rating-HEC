@@ -1,6 +1,7 @@
 "use strict";
 (function(){
 	var candidatescontroller = function($rootScope, $scope, $http){
+		var index = 0;
 		//geting data related codes
 		var refresh = function(){$http.get('/condidateslist').success(function(data){
 			$rootScope.candidateList = data;
@@ -35,7 +36,17 @@
 		//editing candidate
 		$scope.editCandide = function(id){
 			$scope.newCandidateName = $rootScope.candidateList[id].name;
+			index = id;
 		};
+
+		// update candie name  ******** problem
+		$scope.update = function(){
+			$rootScope.candidateList[index].name = $scope.newCandidateName;
+			console.log('updating ' + $rootScope.candidateList[index].name);
+			$http.put('/condidateslist/' + index, {name : $rootScope.candidateList[index].name});
+			refresh();
+		};
+
 
 		//rating related codes
 		$scope.hoveringOver = function(value) {
