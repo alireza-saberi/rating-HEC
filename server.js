@@ -58,6 +58,14 @@ app.delete('/condidateslist/:id', function (req, res) {
   // });
 });
 
+// updating candiate rating
+app.put('/candide/:id', function(req, res){
+  console.log('I received a PUT request to update a candide');
+  var id = req.params.id;
+  candidateList[id] = req.body;
+  res.json(candidateList);
+});
+
 app.listen(port, function(){
 	console.log("Server is listening at the port: " + port);
 });

@@ -1,6 +1,6 @@
 "use strict";
 (function(){
-	var candidatecontroller = function($rootScope, $routeParams, $scope){
+	var candidatecontroller = function($rootScope, $routeParams, $scope, $http){
 		var candiateIndex = $routeParams.candiateIndex;
 		$rootScope.candide = $rootScope.candidateList[parseInt(candiateIndex)];
 		$scope.hoveringOver = function(value) {
@@ -18,10 +18,11 @@
   			$rootScope.candide.overAllRate = (1/3) * (parseInt($rootScope.candide.subrates.item1) + parseInt($rootScope.candide.subrates.item2) + parseInt($rootScope.candide.subrates.item3));
   			$rootScope.candidateList[parseInt(candiateIndex)] = $rootScope.candide;
   			console.log($rootScope.candidateList[parseInt(candiateIndex)]);
+  			$http.put('/candide/' + candiateIndex, $rootScope.candide)
   		}
 
 	};
 
-	candidatecontroller.$inject = ['$rootScope', '$routeParams', '$scope'];
+	candidatecontroller.$inject = ['$rootScope', '$routeParams', '$scope', '$http'];
 	angular.module('ratingApp').controller('candidatecontroller', candidatecontroller);
 }());
