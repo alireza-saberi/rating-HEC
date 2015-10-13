@@ -1,7 +1,9 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var app = express();
+var mongojs = require('mongojs');
 var port = 8000 | process.env.PORT;
+var db = mongojs('mongodb://a_saberi:Saghi-05@ds031601.mongolab.com:31601/rating',['candidateList']);
 
 
 // initial moving of contact list ot back-end
