@@ -2,7 +2,7 @@
     <div class="jumbotron">
       <div class="container">
         <h1 class="text-center">{{candide.name}}</h1>
-        <img src="http://lorempixel.com/150/150/fashion/" class="img-circle center"></img>
+        <img id="preview" src="http://lorempixel.com/150/150/fashion/" class="img-circle center"></img>
       </div>
     </div>
     <div class="container">
@@ -41,4 +41,6 @@
       <button class="btn btn-primary">Upload Image</button>
       <a href="#/"><button class="btn btn-danger">Cancel</button></a>
       <a href="#/"><button class="btn btn-success" data-ng-click="save()">Submit</button></a>
+<!--       <input type="file" name="file" onchange="angular.element(this).scope().uploadFile(this.files)"/>
+ -->
     </div>

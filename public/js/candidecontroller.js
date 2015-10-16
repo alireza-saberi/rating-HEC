@@ -20,6 +20,30 @@
   			$rootScope.candidateList[parseInt(candiateIndex)] = $rootScope.candide;
   			$http.put('/candide/' + $rootScope.candidateList[parseInt(candiateIndex)]._id, $rootScope.candide)
   		}
+  		// image uploading
+  		$scope.uploadFile = function(files) {
+  			console.log(files[0].name + ",  " + files[0].size + " Bytes, Type: "+ files[0].type);
+  			/*
+				I will add some codes here to control
+  			*/
+  			var preview = document.getElementById("preview");
+  			preview.file = files[0];
+  			
+    		var fd = new FormData();
+    		//Take the first selected file
+    		// fd.append("file", files[0]);
+    		// console.log(fd);
+    		// $http.post(uploadUrl, fd, {
+      //   								withCredentials: true,
+      //   								headers: {'Content-Type': undefined },
+      //   								transformRequest: angular.identity
+    		// 						    }).success(function(data){
+    		// 						    	console.log("image uploading is done!");
+    		// 						    }).error(function(err){
+    		// 						    	console.log("Something went wrong with image uploading for " + err);
+    		// 						    });
+
+};
 
 	};
 
