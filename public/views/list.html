@@ -26,7 +26,7 @@
               <td>
                 <rating ng-model="candidate.overAllRate" max="7" readonly="true" on-hover="hoveringOver(value)" on-leave="overStar = null" titles="['-3','-2','-1', '0', '1', '2', '3']" class="color-yellow" ></rating>
               </td>
-              <td><button class="btn btn-danger" data-ng-click="removeCandide($index)">Remove</button></td>
+              <td><button class="btn btn-danger" data-ng-click="removeCandide(candidate._id)">Remove</button></td>
               <td><button class="btn btn-warning" data-ng-click="editCandide($index)">Edit</button></td>
             </tr>
           </tbody>

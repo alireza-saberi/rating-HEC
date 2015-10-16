@@ -11,13 +11,13 @@
 		})};
 		refresh();
 
+		// adding a new candidate
 		$scope.addCandide = function(){
 			var newCandidate = {};
 			newCandidate.name = $scope.newCandidateName;
 			newCandidate.overAllRate = 0;
 			newCandidate.subrates = {item1 : 0, item2 : 0, item3 : 0, item4:0};
 			$http.post('/condidateslist', newCandidate).success(function(res){
-				console.log(res);
 				refresh();
 			}).error(function(err){
 				console.log('Sorry, something wrong happened when adding a new candide');
@@ -33,20 +33,18 @@
 		  });
 		};
 
-		//editing candidate
+		//editing a candidate
 		$scope.editCandide = function(id){
 			$scope.newCandidateName = $rootScope.candidateList[id].name;
 			index = id;
 		};
 
-		// update candie name  ******** problem
+		// update candidate name
 		$scope.update = function(){
 			$rootScope.candidateList[index].name = $scope.newCandidateName;
-			console.log('updating ' + $rootScope.candidateList[index].name);
-			$http.put('/condidateslist/' + index, {name : $rootScope.candidateList[index].name});
+			$http.put('/condidateslist/' + $rootScope.candidateList[index]._id, {name : $rootScope.candidateList[index].name});
 			refresh();
 		};
-
 
 		//rating related codes
 		$scope.hoveringOver = function(value) {

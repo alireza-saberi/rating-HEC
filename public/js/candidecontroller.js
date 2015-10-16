@@ -14,11 +14,11 @@
 							    {stateOn: 'glyphicon-heart'},
 							    {stateOff: 'glyphicon-off'}
   								];
+  		// saving individual candidate information
   		$scope.save = function(){
   			$rootScope.candide.overAllRate = (1/3) * (parseInt($rootScope.candide.subrates.item1) + parseInt($rootScope.candide.subrates.item2) + parseInt($rootScope.candide.subrates.item3));
   			$rootScope.candidateList[parseInt(candiateIndex)] = $rootScope.candide;
-  			console.log($rootScope.candidateList[parseInt(candiateIndex)]);
-  			$http.put('/candide/' + candiateIndex, $rootScope.candide)
+  			$http.put('/candide/' + $rootScope.candidateList[parseInt(candiateIndex)]._id, $rootScope.candide)
   		}
 
 	};
