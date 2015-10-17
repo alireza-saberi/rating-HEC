@@ -14,7 +14,10 @@
 		// adding a new candidate
 		$scope.addCandide = function(){
 			var newCandidate = {};
-			newCandidate.name = $scope.newCandidateName;
+			if ($scope.newCandidateName && $scope.newCandidateName.length)
+				{newCandidate.name = $scope.newCandidateName;}else{
+					return;
+				}
 			newCandidate.overAllRate = 0;
 			newCandidate.subrates = {item1 : 0, item2 : 0, item3 : 0, item4:0};
 			candidatesFactory.post(newCandidate).success(function(res){
