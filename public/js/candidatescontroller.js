@@ -1,13 +1,13 @@
 "use strict";
 (function(){
-	var candidatescontroller = function($rootScope, $scope, $http){
+	var candidatescontroller = function($rootScope, $scope, $http, candidatesFactory){
 		var index = 0;
 		//geting data related codes
-		var refresh = function(){$http.get('/condidateslist').success(function(data){
+		var refresh = function(){candidatesFactory.get().success(function(data){
 			$rootScope.candidateList = data;
 
 		}).error(function(){
-			console.log("Can not reach the server");
+			console.log("Sorry, can not reach the server");
 		})};
 		refresh();
 
@@ -17,7 +17,7 @@
 			newCandidate.name = $scope.newCandidateName;
 			newCandidate.overAllRate = 0;
 			newCandidate.subrates = {item1 : 0, item2 : 0, item3 : 0, item4:0};
-			$http.post('/condidateslist', newCandidate).success(function(res){
+			candidatesFactory.post(newCandidate).success(function(res){
 				refresh();
 			}).error(function(err){
 				console.log('Sorry, something wrong happened when adding a new candide');
@@ -26,7 +26,7 @@
 
 		// removing a candiate
 		$scope.removeCandide = function(id) {
-		  $http.delete('/condidateslist/' + id).success(function(response) {
+		  candidatesFactory.delete(id).success(function(response) {
 		    refresh();
 		  }).error(function(err){
 		  	console.log('Sorry, something wrong happened when deleting a new candide');
@@ -42,7 +42,7 @@
 		// update candidate name
 		$scope.update = function(){
 			$rootScope.candidateList[index].name = $scope.newCandidateName;
-			$http.put('/condidateslist/' + $rootScope.candidateList[index]._id, {name : $rootScope.candidateList[index].name});
+			candidatesFactory.put($rootScope.candidateList[index]._id, {name : $rootScope.candidateList[index].name});
 			refresh();
 		};
 
@@ -61,6 +61,6 @@
 
 	};
 
-	candidatescontroller.$inject = ['$rootScope', '$scope', '$http'];
+	candidatescontroller.$inject = ['$rootScope', '$scope', '$http', 'candidatesFactory'];
 	angular.module('ratingApp').controller('candidatescontroller', candidatescontroller);
 }());
