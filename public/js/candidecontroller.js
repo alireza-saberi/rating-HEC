@@ -36,6 +36,9 @@
   			*/
   			var preview = document.getElementById("preview");
   			preview.file = files[0];
+        var reader = new FileReader();
+        reader.onload = (function(aImg) { return function(e) { aImg.src = e.target.result; }; })(preview);
+        reader.readAsDataURL(files[0]);
   			
     		var fd = new FormData();
     		//Take the first selected file
