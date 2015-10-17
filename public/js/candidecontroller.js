@@ -1,8 +1,16 @@
 "use strict";
 (function(){
 	var candidatecontroller = function($rootScope, $routeParams, $scope, $http){
-		var candiateIndex = $routeParams.candiateIndex;
-		$rootScope.candide = $rootScope.candidateList[parseInt(candiateIndex)];
+    var candiateIndex = $routeParams.candiateIndex;
+    var refresh = function(){
+      $http.get('/condidateslist').success(function(data){
+        $rootScope.candidateList = data;
+		    $rootScope.candide = $rootScope.candidateList[parseInt(candiateIndex)];     
+      }).error(function(error){
+        console.log("Cant find contact information");
+      }); 
+    }
+    refresh()
 		$scope.hoveringOver = function(value) {
 			    $scope.overStar = value;
 			    $scope.percent = 100 * (value / 7);

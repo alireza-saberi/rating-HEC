@@ -10,6 +10,15 @@ app.get('/condidateslist', function (req, res) {
   })
   });
 
+// GET a candiate
+app.get('/candide/:id', function (req, res) {
+  var id = req.params.id;
+  console.log('Server: I get a DELETE request for a user');
+  db.candidateList.find({_id: mongojs.ObjectId(id)}, function (err, doc) {
+    res.json(doc);
+  });
+});
+
 // Adding a new candiate
 app.post('/condidateslist', function (req, res) {
   console.log('Server: I get a POST request to add a new candidate');
