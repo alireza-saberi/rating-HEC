@@ -1,11 +1,25 @@
     <!-- Main jumbotron for a primary marketing message or call to action -->
-    <div class="jumbotron">
+    <div class="jumbotron" data-ng-controller="candidatescontroller">
       <div class="container">
+        <div class="row col-md-offset-4" ng-messages="msgs" role="alert">
+          <div class="alert alert-success col-md-4 col-xs-10 col-md-offset-4" style="position:fixed;top:0;margin:0;z-index:9000" ng-message="newCandidatesuccess">{{newCandidateName}} is added successfully!
+          </div>
+            <div class="alert alert-danger col-md-4 col-xs-10 col-md-offset-4" style="position:fixed;top:0;margin:0;z-index:9000" ng-message="newCandidatesuccess">Can NOT add {{newCandidateName}}
+          </div>
+            <div class="alert alert-success col-md-4 col-xs-10 col-md-offset-4" style="position:fixed;top:0;margin:0;z-index:9000" ng-message="updateCandidatesuccess">{{newCandidateName}} is updated successfully.
+            </div>
+            <div class="alert alert-danger col-md-4 col-xs-10 col-md-offset-4" style="position:fixed;top:0;margin:0;z-index:9000" ng-message="updateCandidateError">Can NOT update {{newCandidateName}}.
+            </div>
+            <div class="alert alert-success col-md-4 col-xs-10 col-md-offset-4" style="position:fixed;top:0;margin:0;z-index:9000" ng-message="deleteCandidatesuccess">Candidate is removed successfully.
+            </div>
+            <div class="alert alert-danger col-md-4 col-xs-10 col-md-offset-4" style="position:fixed;top:0;margin:0;z-index:9000" ng-message="deleteCandidateError">Can NOT remove candidate.
+            </div> 
+
+         </div>
         <h1 class="text-center">Candidates!</h1>
-      </div>
     </div>
     <div class="container">
-        <table class="table" data-ng-controller="candidatescontroller">
+        <table class="table">
           <thead>
             <tr>
               <th>Name</th>
