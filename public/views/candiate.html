@@ -1,12 +1,13 @@
     <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div data-ng-controller="candidatescontroller">
     <div class="jumbotron">
       <div class="container">
         <h1 class="text-center">{{candide.name}}</h1>
-        <img id="preview" src="http://lorempixel.com/150/150/fashion/" width="150px" height="150px" class="img-circle center"></img>
+        <img id="preview" ng-src="{{candide.files.file[0].path}}" width="150px" height="150px" class="img-circle center"></img>
       </div>
     </div>
     <div class="container">
-        <table class="table" data-ng-controller="candidatescontroller">
+        <table class="table">
           <thead>
             <tr>
               <th>Feature</th>
@@ -39,9 +40,10 @@
           </tbody>
         </table>
       <span class="btn btn-default btn-file">
-        Upload Image<input type="file" name="file" onchange="angular.element(this).scope().uploadFile(this.files)"/>
+        <input type="file" ngf-select ngf-change="uploadFile($files)" accept="image/*" ngf-max-height="1000" ngf-max-size="1MB">Upload Image</input>
       </span>
       <a href="#/"><button class="btn btn-danger">Cancel</button></a>
       <a href="#/"><button class="btn btn-success" data-ng-click="save()">Submit</button></a>
 
     </div>
+  </div>

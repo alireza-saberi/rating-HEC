@@ -1,4 +1,15 @@
-module.exports = function(app, express, db, bodyParser, mongojs){
+module.exports = function(app, express, db, bodyParser, mongojs, multipartyMiddleware){
+
+// UserController = function() {};
+
+// UserController.prototype.uploadFile = function(req, res) {
+//     // We are able to access req.files.file thanks to 
+//     // the multiparty middleware
+//     var file = req.files.file;
+//     console.log(file.name);
+//     console.log(file.type);
+// }
+// var ImageInput = new UserController();
 
 app.use(bodyParser.json());
 
@@ -56,6 +67,24 @@ app.put('/candide/:id', function(req, res){
       res.json(doc);
     });
 });
+
+// uploading an image
+// Updating a candiate rating
+app.put('/image/:id', multipartyMiddleware, function(req, res){
+    var id = req.params.id;
+    console.log('Server: I get a PUT request to update an image for candide');
+    var files = req.files;
+    console.log(files);
+    db.candidateList.findAndModify({
+      query: {_id: mongojs.ObjectId(id)},
+      update: {$set: {files: req.files}},
+      new: true},
+       function (err, doc) {
+                    res.json(doc);
+    }
+  );
+});
+
 
 // Updating a candidate name
 app.put('/condidateslist/:id', function (req, res) {

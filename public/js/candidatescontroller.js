@@ -21,6 +21,7 @@
 					newCandidate.name = $scope.newCandidateName;
 					newCandidate.overAllRate = 0;
 					newCandidate.subrates = {item1 : 0, item2 : 0, item3 : 0, item4:0};
+					$scope.newCandidateName="";
 					candidatesFactory.post(newCandidate).success(function(res){
 						refresh();
 						$scope.msgs.newCandidatesuccess =  true;

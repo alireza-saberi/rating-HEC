@@ -21,5 +21,9 @@
   "devDependencies": {
     "angular-bootstrap": "~0.13.4",
     "angular-route": "~1.4.7"
+  },
+  "dependencies": {
+    "ng-file-upload-shim": "~9.0.19",
+    "ng-file-upload": "~9.0.19"
   }
 }
