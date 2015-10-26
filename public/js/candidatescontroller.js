@@ -18,23 +18,34 @@
 		$scope.addCandide = function(){
 			if ($scope.newCandidateName && $scope.newCandidateName.length)
 				{
-					newCandidate.name = $scope.newCandidateName;
-					newCandidate.overAllRate = 0;
-					newCandidate.subrates = {item1 : 0, item2 : 0, item3 : 0, item4:0};
-					$scope.newCandidateName="";
-					candidatesFactory.post(newCandidate).success(function(res){
-						refresh();
-						$scope.msgs.newCandidatesuccess =  true;
-						$timeout(function() {
-							$scope.msgs.newCandidatesuccess = false;
-						}, 2000);
-					}).error(function(err){
-						console.log('Sorry, something wrong happened when adding a new candide');
-						$scope.msgs.newCandidateError =  true;
-						$timeout(function() {
-							$scope.msgs.newCandidateError = false;
-						}, 2000);
-					});	
+					for(var i = 0; i < $rootScope.candidateList.length; i++){
+						if ($rootScope.candidateList[i].name === $scope.newCandidateName){
+							$scope.msgs.newCandidateRepeatError =  true;
+							$timeout(function() {
+								$scope.msgs.newCandidateRepeatError = false;
+							}, 2000);
+							$scope.newCandidateName="";
+							return;
+						}else{
+								newCandidate.name = $scope.newCandidateName;
+								newCandidate.overAllRate = 0;
+								newCandidate.subrates = {item1 : 0, item2 : 0, item3 : 0, item4:0};
+								$scope.newCandidateName="";
+								candidatesFactory.post(newCandidate).success(function(res){
+									refresh();
+									$scope.msgs.newCandidatesuccess =  true;
+									$timeout(function() {
+										$scope.msgs.newCandidatesuccess = false;
+									}, 2000);
+								}).error(function(err){
+									console.log('Sorry, something wrong happened when adding a new candide');
+									$scope.msgs.newCandidateError =  true;
+									$timeout(function() {
+										$scope.msgs.newCandidateError = false;
+									}, 2000);
+								});				
+						}
+					}
 				}else{
 					$scope.msgs.updateCandidateError2 =  true;
 					$timeout(function() {
