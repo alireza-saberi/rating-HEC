@@ -41,21 +41,21 @@
   		    preview.file = files[0];
           var reader = new FileReader();
           reader.onload = (function(aImg) { return function(e) { aImg.src = e.target.result; }; })(preview);
-          console.log("The file that, I am uploading to the browser is :", files[0]);
+          console.log("The file that, I am uploading to the browser is :", preview.file);
           reader.readAsDataURL(files[0]);
           // uploading image to server
-          var filename = files[0].name;
-          var type = files[0].type;
-          var query = {
-                      filename: filename,
-                      type: type
-                      };
+          // var filename = files[0].name;
+          // var type = files[0].type;
+          // var query = {
+          //             filename: filename,
+          //             type: type
+          //             };
               Upload.upload(
                 {
                   url: '/image/' + $rootScope.candidateList[parseInt(candiateIndex)]._id,
-                  method: 'PUT',
+                  method: 'POST',
                   // data: data // Any data needed to be submitted along with the files
-                  file: preview
+                  file: preview.file
                 }).progress(function(evt){
                   // console.log('progress: ' + parseInt(100.0 * evt.loaded / evt.total));
               }).success(function(data, status, headers, config){

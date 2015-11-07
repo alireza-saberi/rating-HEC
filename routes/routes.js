@@ -1,15 +1,4 @@
-module.exports = function(app, express, db, bodyParser, mongojs, multipartyMiddleware){
-
-// UserController = function() {};
-
-// UserController.prototype.uploadFile = function(req, res) {
-//     // We are able to access req.files.file thanks to 
-//     // the multiparty middleware
-//     var file = req.files.file;
-//     console.log(file.name);
-//     console.log(file.type);
-// }
-// var ImageInput = new UserController();
+module.exports = function(app, express, db, bodyParser, mongojs, fs, os, config, formidable, gm, client){
 
 app.use(bodyParser.json());
 
@@ -69,22 +58,52 @@ app.put('/candide/:id', function(req, res){
 });
 
 // uploading an image
-// Updating a candiate rating
-app.put('/image/:id', multipartyMiddleware, function(req, res){
-    var id = req.params.id;
-    console.log('Server: I get a PUT request to update an image for candide');
-    var files = req.files;
-    console.log(files);
-    db.candidateList.findAndModify({
-      query: {_id: mongojs.ObjectId(id)},
-      update: {$set: {files: req.files}},
-      new: true},
-       function (err, doc) {
-                    res.json(doc);
-    }
-  );
-});
+app.post('/image/:id', function(req, res, next){
+     var id = req.params.id;
+     console.log('Server: I get a PUT request to update an image for candide');
+     var form = new formidable.IncomingForm();
+     form.keepExtensions = true;
+     var temp, filename, extn, nFileName, nFile;
+     form.parse(req, function(err, fields, files){
+         temp = files.file.path;
+         filename = files.file.name;
+         console.log("file name is ",  filename);
+         console.log("temp is ",  temp);
+         extn = filename.split(".").pop();
+         console.log("extension  is ",  extn);
+         nFileName = id + '.' + extn;
+         nFile = os.tmpDir() + '/' + nFileName;
+         console.log('nFile is ', nFile)
+         res.writeHead(200, {'Content-type' : 'text/plain'});
+         res.end();
+      });
+     form.on('end', function(){
+        fs.rename(temp, nFile, function(err){
+          if (err) throw err; 
+          // resize this image and send it to S3 bucket
+          gm(nFile).resize(150).write(nFile, function(err){
+            if (!err) console.log('resizing is done');
+            // uploading to S3 bucket
+            fs.readFile(nFile, function(error, buffer){
+              if (err) throw err;
+              var req = client.put(nFile, {
+                                                      'Content-Length': buffer.length,
+                                                      'Content-Type': 'image/jpeg'
+                                                      });
 
+              req.on('response', function(res){
+                                                if (200 == res.statusCode) {
+                                                                            // This means that file has successfully upload to S3 bucket
+                                                                            console.log('Image is saved on s3 bucket');  
+                                                                            }
+                    });
+              req.end(buffer);
+            });
+            })
+        });
+     });
+
+ });
 
 // Updating a candidate name
 app.put('/condidateslist/:id', function (req, res) {

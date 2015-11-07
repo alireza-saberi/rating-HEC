@@ -50,6 +50,7 @@
         <footer class="text-center"> MADE WITH <i class="fa fa-heart color-violet"></i> BY <span class="color-violet">ALAN SABERI</span>. FIND THIS ON <a href="https://github.com/alireza-saberi/rating-HEC" target="_bank"><span class="color-violet">GITHUB</span></a></footer>
     </div>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <script src="https://assets.transloadit.com/js/jquery.transloadit2-v2-latest.js"></script>
         <script src="js/vendor/bootstrap.min.js"></script>
         <script src="js/vendor/angular.min.js"></script>
         <script src="js/vendor/angular-messages.min.js"></script>
@@ -61,5 +62,23 @@
         <script src="js/services/candidates.js"></script>        
         <script src="js/candidatescontroller.js"></script>
         <script src="js/candidecontroller.js"></script>
+        <script type="text/javascript">
+                $(function() {
+                  $('#upload-form').transloadit({
+                    wait: true,
+                    params: {
+                                auth: { key: "ef1e0700842f11e583a8175210cd2ab4" },
+                                steps: {
+                                        resize_to_150: {
+                                        robot: "/image/resize",
+                                        use: ":original",
+                                        width: 150,
+                                        height: 150
+                        }
+                      }
+                    }
+                  });
+                });
+        </script>
     </body>
 </html>
