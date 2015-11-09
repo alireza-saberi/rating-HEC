@@ -13,6 +13,9 @@
 		candidatesInfo.put = function(id, newInfo){
 			return $http.put('/condidateslist/' + id, newInfo);
 		}
+		candidatesInfo.putSingleCandide = function(id, SingleCandide){
+			return $http.put('/candide/' + id, SingleCandide);
+		}		
 		return candidatesInfo;
 	}
 	candidatesFactory.$inject = ['$http'];

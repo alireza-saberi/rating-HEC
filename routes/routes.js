@@ -67,13 +67,13 @@ app.post('/image/:id', function(req, res, next){
      form.parse(req, function(err, fields, files){
          temp = files.file.path;
          filename = files.file.name;
-         console.log("file name is ",  filename);
-         console.log("temp is ",  temp);
+         //console.log("file name is ",  filename);
+         //console.log("temp is ",  temp);
          extn = filename.split(".").pop();
-         console.log("extension  is ",  extn);
+         //console.log("extension  is ",  extn);
          nFileName = id + '.' + extn;
          nFile = os.tmpDir() + '/' + nFileName;
-         console.log('nFile is ', nFile)
+         //console.log('nFile is ', nFile)
          res.writeHead(200, {'Content-type' : 'text/plain'});
          res.end();
       });
@@ -82,7 +82,7 @@ app.post('/image/:id', function(req, res, next){
           if (err) throw err; 
           // resize this image and send it to S3 bucket
           gm(nFile).resize(150).write(nFile, function(err){
-            if (!err) console.log('resizing is done');
+            if (!err) console.log('Resizing is done');
             // uploading to S3 bucket
             fs.readFile(nFile, function(error, buffer){
               if (err) throw err;
@@ -94,7 +94,17 @@ app.post('/image/:id', function(req, res, next){
               req.on('response', function(res){
                                                 if (200 == res.statusCode) {
                                                                             // This means that file has successfully upload to S3 bucket
-                                                                            console.log('Image is saved on s3 bucket');  
+                                                                            //console.log('Image is saved on s3 bucket'); 
+                                                                             db.candidateList.findAndModify({
+                                                                                query: {_id: mongojs.ObjectId(id)},
+                                                                                update:{ $set: {
+                                                                                    imageName: nFileName
+                                                                                }
+                                                                                },
+                                                                                new : true
+                                                                             }, function (err, doc) {
+                                                                              //res.json(doc);
+                                                                              });
                                                                             }
                     });
               req.end(buffer);
