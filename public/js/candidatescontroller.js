@@ -65,19 +65,22 @@
 
 		// removing a candiate
 		$scope.removeCandide = function(id) {
-		  candidatesFactory.delete(id).success(function(response) {
-		    refresh();
-			$scope.msgs.deleteCandidatesuccess =  true;
+			if($rootScope.candidateList && $rootScope.candidateList.length > 1){
+		  		candidatesFactory.delete(id).success(function(response) {
+		    	refresh();
+				$scope.msgs.deleteCandidatesuccess =  true;
 				$timeout(function() {
 					$scope.msgs.deleteCandidatesuccess = false;
-			}, 2000);		    
-		  }).error(function(err){
-		  	console.log('Sorry, something wrong happened when deleting a new candide');
-			$scope.msgs.newCandidateError =  true;
-				$timeout(function() {
-					$scope.msgs.newCandidateError = false;
-				}, 2000);		  	
-		  });
+					}, 2000);		    
+		  		}).error(function(err){
+		  			console.log('Sorry, something wrong happened when deleting a new candide');
+					$scope.msgs.newCandidateError =  true;
+					$timeout(function() {
+						$scope.msgs.newCandidateError = false;
+					}, 2000);		  	
+		  });} else{
+
+		  		}
 		};
 
 		//editing a candidate
