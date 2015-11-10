@@ -2,7 +2,6 @@
 (function(){
 	var candidatescontroller = function($rootScope, $scope, $http, candidatesFactory, $timeout){
 		var index = 0;
-		var newCandidate = {};
 		$scope.msgs = {};
 		$scope.deactiveUpdateButton = true;
 		//geting data related codes
@@ -23,7 +22,7 @@
 
 		// adding a new candidate
 		$scope.addCandide = function(){
-			if ($scope.newCandidateName && $scope.newCandidateName.length)
+			if ($scope.newCandidateName && $scope.newCandidateName.length > 0)
 				{
 					for(var i = 0; i < $rootScope.candidateList.length; i++){
 						if ($rootScope.candidateList[i].name === $scope.newCandidateName){
@@ -33,15 +32,16 @@
 							}, 2000);
 							$scope.newCandidateName="";
 							return;
-						}else{
+							}}
+								var newCandidate = {};
 								newCandidate.name = $scope.newCandidateName;
 								newCandidate.overAllRate = 0;
 								newCandidate.subrates = {item1 : 0, item2 : 0, item3 : 0, item4:0};
 								newCandidate.imageName = "";
 								newCandidate.totalVote = 0;
-								$scope.newCandidateName = "";
 								candidatesFactory.post(newCandidate).success(function(res){
 									refresh();
+									$scope.newCandidateName = "";
 									$scope.msgs.newCandidatesuccess =  true;
 									$timeout(function() {
 										$scope.msgs.newCandidatesuccess = false;
@@ -53,8 +53,6 @@
 										$scope.msgs.newCandidateError = false;
 									}, 2000);
 								});				
-						}
-					}
 				}else{
 					$scope.msgs.updateCandidateError2 =  true;
 					$timeout(function() {
