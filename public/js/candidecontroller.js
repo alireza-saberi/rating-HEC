@@ -30,10 +30,16 @@
   								];
   		// saving individual candidate information
   		$scope.save = function(){
-  			$rootScope.candide.overAllRate = (1/3) * (parseInt($rootScope.candide.subrates.item1) + parseInt($rootScope.candide.subrates.item2) + parseInt($rootScope.candide.subrates.item3));
-        console.log($rootScope.candide.totalVote);
-        $rootScope.candide.totalVote =  parseInt($rootScope.candide.totalVote) + 1;
-        console.log($rootScope.candide.totalVote);
+  			var pastAvg = parseInt($rootScope.candide.overAllRate);
+        var pastTotalVote = parseInt($rootScope.candide.totalVote);
+        var pastTotal = pastAvg * pastTotalVote;
+        var newTotal = (parseInt($rootScope.candide.subrates.item1) + parseInt($rootScope.candide.subrates.item2) + parseInt($rootScope.candide.subrates.item3));
+        var total = pastTotal + newTotal;
+        var totalVote = pastTotalVote + 1;
+        var avg = total / totalVote;
+        console.log(avg);
+        $rootScope.candide.totalVote =  totalVote;
+        $rootScope.candide.overAllRate = avg;
   			$rootScope.candidateList[parseInt(candiateIndex)] = $rootScope.candide;
         candidatesFactory.putSingleCandide($rootScope.candidateList[parseInt(candiateIndex)]._id, $rootScope.candide);
   		}
