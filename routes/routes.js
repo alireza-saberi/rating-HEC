@@ -49,8 +49,10 @@ app.put('/candide/:id', function(req, res){
                    item2: req.body.subrates.item2,
                    item3: req.body.subrates.item3,
                    item4: req.body.subrates.item4
-                    }
+                    },
+      totalVote: req.body.totalVote
                   }
+
     },
     new: true}, function (err, doc) {
       res.json(doc);

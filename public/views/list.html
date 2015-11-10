@@ -22,11 +22,11 @@
         <h1 class="text-center">Candidates!</h1>
     </div>
     <div class="container">
-        <table class="table">
+      <div class="row">
+        <table class="table col-md-12">
           <thead>
             <tr>
               <th>Name</th>
-              <th>Overall Rate</th>
               <th>Action</th>
               <th>&nbsp;</th>
             </tr>
@@ -34,18 +34,30 @@
           <tbody class="table-striped table-hover">
             <tr>
               <td><input type="text" class="form-control" data-ng-model="newCandidateName"></td>
-              <td>&nbsp;</td>
               <td><button class="btn btn-primary" data-ng-click="addCandide()">Add Candidate</button></td>
               <td><button class="btn btn-info" data-ng-disabled="deactiveUpdateButton" data-ng-click="update()">Update</button></td>
             </tr>
-            <tr data-ng-repeat="candidate in candidateList">
-              <td><a href="#/candidate/{{$index}}">{{candidate.name}}</a></td>
-              <td>
-                <rating ng-model="candidate.overAllRate" max="7" readonly="true" on-hover="hoveringOver(value)" on-leave="overStar = null" titles="['-3','-2','-1', '0', '1', '2', '3']" class="color-yellow" ></rating>
-              </td>
-              <td><button class="btn btn-danger" data-ng-click="removeCandide(candidate._id)">Remove</button></td>
-              <td><button class="btn btn-warning" data-ng-click="editCandide($index)">Edit</button></td>
-            </tr>
           </tbody>
         </table>
+      </div>
+      <div class="row">
+          <div data-ng-repeat="candidate in candidateList" class="col-xs-12 col-md-4">
+            <div class="panel panel-default">
+            <div class="panel-heading text-center">
+              <a href="#/candidate/{{$index}}">{{candidate.name}} <br/>
+              </a>
+            </div>
+            <div class="panel-body text-center ">
+                <img ng-src="{{candidateImage[$index]}}" class="img-circle center" width="150px" height="150px">
+                <h3 class="text-center">Votes: {{candidate.totalVote}}</h3>
+                  <rating class="color-yellow" ng-model="candidate.overAllRate" max="7" readonly="true" on-hover="hoveringOver(value)" on-leave="overStar = null" titles="['-3','-2','-1', '0', '1', '2', '3']">
+                  </rating>
+                <br/>
+                <button class="btn btn-danger center" data-ng-click="removeCandide(candidate._id)">Remove</button><br/>
+                <button class="btn btn-warning center" data-ng-click="editCandide($index)">Edit</button>
+
+            </div>
+          </div>
+          </div>
+      </div>
     </div>

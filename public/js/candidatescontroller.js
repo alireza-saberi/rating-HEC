@@ -8,7 +8,15 @@
 		//geting data related codes
 		var refresh = function(){candidatesFactory.get().success(function(data){
 			$rootScope.candidateList = data;
-
+			$rootScope.candidateImage =[];
+			for(var i = 0;i < data.length; i++){
+				if (data[i].imageName && data[i].imageName.length){
+				$rootScope.candidateImage[i] = 'https://s3.amazonaws.com/mostafa-1/tmp/' + 	data[i].imageName;
+				console.log(data[i].totalVote);
+				} else{
+					$rootScope.candidateImage[i] = "http://lorempixel.com/150/150/fashion/";
+				}
+			}
 		}).error(function(){
 			console.log("Sorry, can not reach the server");
 		})};
