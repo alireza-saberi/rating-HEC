@@ -4,17 +4,18 @@ A simple rating, voting app initially asked by a friend in business school for i
 You can add, edit, remove, update and vote for each candiates based on four factors of Iman, Taghva, Akhlagh, and Tokhm!:scream:
 
 ## Demo
-![homepage](images/Rating.png)
+![homepage](images/vote_final.png)
 
 ![candidate](images/mostafa.png)
 
 ## APIs and technologies
 - HTML5, CSS, JS, [Bootstrap](http://getbootstrap.com/)
-- [AngularJS](https://angularjs.org/)
+- [AngularJS](https://angularjs.org/), [ng-file-upload from Daniel Farid](https://github.com/danialfarid/ng-file-upload)
 - [UI-bootstrap](https://angular-ui.github.io/bootstrap/)
 - [NodeJS](https://nodejs.org/en/)
-- [Express](http://expressjs.com/)
-- [MongoDB](https://www.mongodb.org/)
+- [Express](http://expressjs.com/), [Knox for AWS](https://github.com/Automattic/knox), [formiable for getting an image in the body of POST request](https://www.npmjs.com/package/formidable)
+- [MongoDB](https://www.mongodb.org/), [Mongojs for conneting](https://github.com/mafintosh/mongojs)
+- [graphicsmagick](http://www.graphicsmagick.org/) for image processing in the server side
 
 ## How to make it work on your machine (To Mostafa)
 - Download ZIP
@@ -27,5 +28,6 @@ You can add, edit, remove, update and vote for each candiates based on four fact
 - Type `node server.js` which runs the server file and pushes all of the files to you localhost in browser.
 - Prefably use Chrome now. and type `localhost:8000` in url. You will see the the home page of your project.
 - You dont have candidates now, but you can start adding them.  Remember that all of these candiate are only on your local machine.
+- You have for get configuration directory from me separately.
 - I have to update uploading image module later, which I had some difficulty making it last night,
 - I will modify more after these interviews.
