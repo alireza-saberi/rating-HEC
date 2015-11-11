@@ -39,12 +39,18 @@
             </tr>                                
           </tbody>
         </table>
-          <span class="btn btn-default btn-file">
+ <!--          <span class="btn btn-default btn-file">
               <input type="file" ngf-select ngf-change="uploadFile($files)" accept="image/*" ngf-max-height="1000" ngf-max-size="1MB">Upload Image
               </input>
-          </span>
+          </span> -->
           <a href="#/"><button class="btn btn-danger">Cancel</button></a>
-          <a href="#/"><button class="btn btn-success" data-ng-click="save()">Submit</button></a>
-    </div>
-  </div>
+          <button class="btn btn-success" data-ng-click="save()">Submit</button>
+<!--           <div class="button" ngf-select="upload($file)">Upload on file select</div>
+ --><!--           Image thumbnail: <img ngf-thumbnail="file || '/thumb.jpg'">
+ -->    
+<!--           </div> -->
+         <button type="file" ngf-select="uploadFiles($file, $invalidFiles)"
+                  accept="image/*" class="btn btn-primary">
+          Select File</button>
+          </div>
   

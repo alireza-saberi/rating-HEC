@@ -1,6 +1,6 @@
 "use strict";
 (function(){
-	var candidatecontroller = function($rootScope, $routeParams, $scope, $http, Upload, candidatesFactory){
+	var candidatecontroller = function($rootScope, $routeParams, $scope, $http, Upload, candidatesFactory, $location){
     var candiateIndex = $routeParams.candiateIndex;
     var refresh = function(){
       $http.get('/condidateslist').success(function(data){
@@ -42,33 +42,34 @@
         $rootScope.candide.overAllRate = avg;
   			$rootScope.candidateList[parseInt(candiateIndex)] = $rootScope.candide;
         candidatesFactory.putSingleCandide($rootScope.candidateList[parseInt(candiateIndex)]._id, $rootScope.candide);
+        $location.path('/');
   		}
   		// image uploading
-  		$scope.uploadFile = function(files) {
-        if(files.length > 0){
-  		    var preview = document.getElementById("preview");
-  		    preview.file = files[0];
-          var reader = new FileReader();
-          reader.onload = (function(aImg) { return function(e) { aImg.src = e.target.result; }; })(preview);
-          //console.log("The file that, I am uploading to the browser is :", preview.file);
-          reader.readAsDataURL(files[0]);
-              Upload.upload(
-                {
-                  url: '/image/' + $rootScope.candidateList[parseInt(candiateIndex)]._id,
-                  method: 'POST',
-                  // data: data // Any data needed to be submitted along with the files
-                  file: preview.file
-                }).progress(function(evt){
-              }).success(function(data, status, headers, config){
-                //console.log("Image succesfully uploaded to server");                     
-              }).error(function(error){
-                console.log("Error uploading image to server");
-              });         
+  		$scope.uploadFiles = function(file, errFiles) {
+        console.log(file);
+            //console.log(file.length);
+  		      var preview = document.getElementById("preview");
+  		      preview.file = file;
+            var reader = new FileReader();
+            reader.onload = (function(aImg) { return function(e) { aImg.src = e.target.result; }; })(preview);
+            console.log("The file that, I am uploading to the browser is :", preview.file);
+            reader.readAsDataURL(file);
+               Upload.upload(
+                 {
+                   url: '/image/' + $rootScope.candidateList[parseInt(candiateIndex)]._id,
+                   method: 'POST',
+                   // data: data // Any data needed to be submitted along with the files
+                   file: preview.file
+                 }).progress(function(evt){
+                 }).success(function(data, status, headers, config){
+                     console.log("Image succesfully uploaded to server");                     
+                 }).error(function(error){
+                   console.log("Error uploading image to server");
+               });         
 
-        }
       };
 	};
 
-	candidatecontroller.$inject = ['$rootScope', '$routeParams', '$scope', '$http', 'Upload', 'candidatesFactory'];
+	candidatecontroller.$inject = ['$rootScope', '$routeParams', '$scope', '$http', 'Upload', 'candidatesFactory', '$location'];
 	angular.module('ratingApp').controller('candidatecontroller', candidatecontroller);
 }());
