@@ -1,6 +1,6 @@
 "use strict";
 (function(){
-	var candidatescontroller = function($rootScope, $scope, $http, candidatesFactory, $timeout){
+	var candidatescontroller = function($scope, $http, candidatesFactory, $timeout){
 		var index = 0;
 		$scope.msgs = {};
 		$scope.deactiveUpdateButton = true;
@@ -128,6 +128,6 @@
 
 	};
 
-	candidatescontroller.$inject = ['$rootScope', '$scope', '$http', 'candidatesFactory', '$timeout'];
+	candidatescontroller.$inject = ['$scope', '$http', 'candidatesFactory', '$timeout'];
 	angular.module('ratingApp').controller('candidatescontroller', candidatescontroller);
 }());
