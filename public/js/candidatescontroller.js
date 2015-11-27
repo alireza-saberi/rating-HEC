@@ -6,13 +6,13 @@
 		$scope.deactiveUpdateButton = true;
 		//geting data related codes
 		var refresh = function(){candidatesFactory.get().success(function(data){
-			$rootScope.candidateList = data;
-			$rootScope.candidateImage =[];
+			$scope.candidateList = data;
+			$scope.candidateImage =[];
 			for(var i = 0;i < data.length; i++){
 				if (data[i].imageName && data[i].imageName.length){
-				$rootScope.candidateImage[i] = 'https://s3.amazonaws.com/mostafa-1/' + 	data[i].imageName;
+				$scope.candidateImage[i] = 'https://s3.amazonaws.com/mostafa-1/' + 	data[i].imageName;
 				} else{
-					$rootScope.candidateImage[i] = "http://lorempixel.com/150/150/fashion/";
+					$scope.candidateImage[i] = "http://lorempixel.com/150/150/fashion/";
 				}
 			}
 		}).error(function(){
@@ -24,8 +24,8 @@
 		$scope.addCandide = function(){
 			if ($scope.newCandidateName && $scope.newCandidateName.length > 0)
 				{
-					for(var i = 0; i < $rootScope.candidateList.length; i++){
-						if ($rootScope.candidateList[i].name === $scope.newCandidateName){
+					for(var i = 0; i < $scope.candidateList.length; i++){
+						if ($scope.candidateList[i].name === $scope.newCandidateName){
 							$scope.msgs.newCandidateRepeatError =  true;
 							$timeout(function() {
 								$scope.msgs.newCandidateRepeatError = false;
@@ -63,7 +63,7 @@
 
 		// removing a candiate
 		$scope.removeCandide = function(id) {
-			if($rootScope.candidateList && $rootScope.candidateList.length > 1){
+			if($scope.candidateList && $scope.candidateList.length > 1){
 		  		candidatesFactory.delete(id).success(function(response) {
 		    	refresh();
 				$scope.msgs.deleteCandidatesuccess =  true;
@@ -84,15 +84,15 @@
 		//editing a candidate
 		$scope.editCandide = function(id){
 			$scope.deactiveUpdateButton = false;
-			$scope.newCandidateName = $rootScope.candidateList[id].name;
+			$scope.newCandidateName = $scope.candidateList[id].name;
 			index = id;
 		};
 
 		// update candidate name
 		$scope.update = function(){
 			if ($scope.newCandidateName && $scope.newCandidateName.length){
-			$rootScope.candidateList[index].name = $scope.newCandidateName;
-			candidatesFactory.put($rootScope.candidateList[index]._id, {name : $rootScope.candidateList[index].name}).success(function(){
+			$scope.candidateList[index].name = $scope.newCandidateName;
+			candidatesFactory.put($scope.candidateList[index]._id, {name : $scope.candidateList[index].name}).success(function(){
 					refresh();
 					$scope.msgs.updateCandidatesuccess =  true;
 					$timeout(function() {
