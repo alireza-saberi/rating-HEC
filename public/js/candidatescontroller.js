@@ -1,9 +1,10 @@
 "use strict";
 (function(){
-	var candidatescontroller = function($scope, $http, candidatesFactory, $timeout){
+	var candidatescontroller = function($scope, $http, candidatesFactory, $timeout, modalService){
 		var index = 0;
 		$scope.msgs = {};
 		$scope.deactiveUpdateButton = true;
+		$scope.animationsEnabled = true;
 		//geting data related codes
 		var refresh = function(){candidatesFactory.get().success(function(data){
 			$scope.candidateList = data;
@@ -62,24 +63,37 @@
 		};
 
 		// removing a candiate
-		$scope.removeCandide = function(id) {
-			if($scope.candidateList && $scope.candidateList.length > 1){
-		  		candidatesFactory.delete(id).success(function(response) {
-		    	refresh();
-				$scope.msgs.deleteCandidatesuccess =  true;
-				$timeout(function() {
-					$scope.msgs.deleteCandidatesuccess = false;
-					}, 2000);		    
-		  		}).error(function(err){
-		  			console.log('Sorry, something wrong happened when deleting a new candide');
-					$scope.msgs.newCandidateError =  true;
-					$timeout(function() {
-						$scope.msgs.newCandidateError = false;
-					}, 2000);		  	
-		  });} else{
+		$scope.removeCandide = function(id, size) {
 
-		  		}
-		};
+		var modalOptions = {
+            closeButtonText: 'Cancel',
+            actionButtonText: 'Delete Candidate',
+            headerText: 'Delete',
+            bodyText: 'Are you sure you want to delete this candidate?'
+        };
+
+        modalService.showModal({}, modalOptions).then(function (result) {
+
+		 							if($scope.candidateList && $scope.candidateList.length > 1){
+		  								candidatesFactory.delete(id).success(function(response) {
+		    							refresh();
+										$scope.msgs.deleteCandidatesuccess =  true;
+										$timeout(function() {
+												$scope.msgs.deleteCandidatesuccess = false;
+												}, 2000);		    
+		  								}).error(function(err){
+		  									console.log('Sorry, something wrong happened when deleting a new candide');
+											$scope.msgs.newCandidateError =  true;
+											$timeout(function() {
+											$scope.msgs.newCandidateError = false;
+											}, 2000);		  	
+		  							});} else{
+		  									return false;
+									}
+
+        });
+
+		  };
 
 		//editing a candidate
 		$scope.editCandide = function(id){
@@ -128,6 +142,6 @@
 
 	};
 
-	candidatescontroller.$inject = ['$scope', '$http', 'candidatesFactory', '$timeout'];
+	candidatescontroller.$inject = ['$scope', '$http', 'candidatesFactory', '$timeout', 'modalService'];
 	angular.module('ratingApp').controller('candidatescontroller', candidatescontroller);
 }());
