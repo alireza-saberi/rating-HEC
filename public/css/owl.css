@@ -1,168 +1,3 @@
-
-
-/* ==========================================================================
-   Author's custom styles
-   ========================================================================== */
-
-.color-violet {
-	color: violet;
-
-}
-
-.color-yellow {
-	color: yellow;
-
-}
-
-.glyphicon {
-    font-size: 20px;
-}
-
-.col-centered{
-    float: none;
-    margin: 0 auto;
-    
-}
-
-hr {
-	background-color: violet;
-	height: 2px;
-	border: none;
-
-}
-
-.center {
-	display: block;
-	margin: 0 auto;
-}
-
-.nav, .pagination, .carousel, .panel-title a { 
-	cursor: pointer; 
-
-}
-
-/* for input file button */
-.btn-file {
-    position: relative;
-    overflow: hidden;
-
-}
-
-.btn-file input[type=file] {
-    position: absolute;
-    top: 0;
-    right: 0;
-    min-width: 100%;
-    min-height: 100%;
-    font-size: 100px;
-    text-align: right;
-    filter: alpha(opacity=0);
-    opacity: 0;
-    outline: none;
-    background: white;
-    cursor: inherit;
-    display: block;
-    
-}
-
-.slide-animation.ng-enter, .slide-animation.ng-leave {
-    -webkit-transition: 0.5s linear all;
-    -moz-transition: 0.5s linear all;
-    -o-transition: 0.5s linear all;
-    transition: 0.5s linear all;
-    position:relative;
-    height: 1000px; /* This can be changed based on your target resolution */
-}
-
-.slide-animation.ng-enter {
-  z-index:100;
-  left:100px;
-  opacity:0;
-}
-
-.slide-animation.ng-enter.ng-enter-active {
-  left:0;
-  opacity:1;
-}
-
-.slide-animation.ng-leave {
-  z-index:101;
-  opacity:1;
-  left:0;
-}
-
-.slide-animation.ng-leave.ng-leave-active {
-  left:-100px;
-  opacity:0;
-}
-
-body.skip-animations * {
-  -webkit-transition:none!important;
-  -moz-transition:none!important;
-  -o-transition:none!important;
-  transition:none!important;
-}
-
-.show-hide-animation.ng-hide-add, 
-.show-hide-animation.ng-hide-remove {
-  -webkit-transition:all linear 0.3s;
-  -moz-transition:all linear 0.3s;
-  -o-transition:all linear 0.3s;
-  transition:all linear 0.3s;
-  display:block!important;
-  height: 1000px;
-}
- 
-.show-hide-animation.ng-hide-remove {
-  opacity:0;
-}
-.show-hide-animation.ng-hide-remove.ng-hide-remove-active {
-  opacity:1;
-}
-.show-hide-animation.ng-hide-add {
-  opacity:1;
-}
-.show-hide-animation.ng-hide-add.ng-hide-add-active {
-  opacity:0;
-}
-
-.repeat-animation.ng-enter, 
-.repeat-animation.ng-leave, 
-.repeat-animation.ng-move {
-  -webkit-transition: 0.5s linear all;
-  -moz-transition: 0.5s linear all;
-  -o-transition: 0.5s linear all;
-  transition: 0.5s linear all;
-  position:relative;
-}
-
-.repeat-animation.ng-enter {
-  left:10px;
-  opacity:0;
-}
-.repeat-animation.ng-enter.ng-enter-active {
-  left:0;
-  opacity:1;
-}
-
-.repeat-animation.ng-leave {
-  left:10px;
-  opacity:1;
-}
-.repeat-animation.ng-leave.ng-leave-active {
-  left:-10px;
-  opacity:0;
-}
-
-.repeat-animation.ng-move {
-  opacity:0.5;
-}
-.repeat-animation.ng-move.ng-move-active {
-  opacity:1;
-}
-
-
-/* Owl part*/
 body {
     font-family: 'Open Sans',Helvetica,Arial,sans-serif !important; 
     font-weight: lighter; !important;
@@ -287,19 +122,19 @@ body {
     color: #fff;
     font-family: rochester;
     font-weight:600;
-  z-index: 5;
-  font-size: 35vmin;
-  text-shadow: 0vmin 1vmin 15vmin #fff;
+	z-index: 5;
+	font-size: 35vmin;
+	text-shadow: 0vmin 1vmin 15vmin #fff;
 }
 
 .moon .right {
     position: absolute;
     color: #fff;
     font-family: rochester;
-  font-weight:600;
-  z-index: 5;
-  font-size: 35vmin;
-  text-shadow: 0vmin 1vmin 15vmin #fff;
+	font-weight:600;
+	z-index: 5;
+	font-size: 35vmin;
+	text-shadow: 0vmin 1vmin 15vmin #fff;
 }
 
 .message {
@@ -822,7 +657,7 @@ body {
     -o-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
-  
+	
 }
 
 .owl:hover  .wing2{
@@ -830,7 +665,7 @@ body {
     -moz-transform: rotate(35deg);
     -o-transform: rotate(35deg);
     -ms-transform: rotate(35deg);
-    transform: rotate(35deg); 
+    transform: rotate(35deg);	
 }
 
 .owl:hover  .wing3{
@@ -838,7 +673,7 @@ body {
     -moz-transform: rotate(25deg);
     -o-transform: rotate(25deg);
     -ms-transform: rotate(25deg);
-    transform: rotate(25deg); 
+    transform: rotate(25deg);	
 }
 
 .owl:hover  .wing4{
@@ -846,7 +681,7 @@ body {
     -moz-transform: rotate(15deg);
     -o-transform: rotate(15deg);
     -ms-transform: rotate(15deg);
-    transform: rotate(15deg);   
+    transform: rotate(15deg);		
 }
 
 .owl:hover  .wing5{
@@ -854,7 +689,7 @@ body {
     -moz-transform: rotate(5deg);
     -o-transform: rotate(5deg);
     -ms-transform: rotate(5deg);
-    transform: rotate(5deg);  
+    transform: rotate(5deg);	
 }
 
 .owl:hover  .wing6{
@@ -862,7 +697,7 @@ body {
     -moz-transform: rotate(2deg);
     -o-transform: rotate(2deg);
     -ms-transform: rotate(2deg);
-    transform: rotate(2deg);  
+    transform: rotate(2deg);	
 }
 
 .owl:hover  .wing7{
@@ -870,7 +705,7 @@ body {
     -moz-transform: rotate(-45deg);
     -o-transform: rotate(-45deg);
     -ms-transform: rotate(-45deg);
-    transform: rotate(-45deg);  
+    transform: rotate(-45deg);	
 }
 
 .owl:hover  .wing8{
@@ -878,7 +713,7 @@ body {
     -moz-transform: rotate(-35deg);
     -o-transform: rotate(-35deg);
     -ms-transform: rotate(-35deg);
-    transform: rotate(-35deg);  
+    transform: rotate(-35deg);	
 }
 
 .owl:hover  .wing9{
@@ -886,7 +721,7 @@ body {
     -moz-transform: rotate(-25deg);
     -o-transform: rotate(-25deg);
     -ms-transform: rotate(-25deg);
-    transform: rotate(-25deg);  
+    transform: rotate(-25deg);	
 }
 
 .owl:hover  .wing10{
@@ -894,7 +729,7 @@ body {
     -moz-transform: rotate(-15deg);
     -o-transform: rotate(-15deg);
     -ms-transform: rotate(-15deg);
-    transform: rotate(-15deg);    
+    transform: rotate(-15deg);		
 }
 
 .owl:hover  .wing11{
@@ -902,7 +737,7 @@ body {
     -moz-transform: rotate(-5deg);
     -o-transform: rotate(-5deg);
     -ms-transform: rotate(-5deg);
-    transform: rotate(-5deg); 
+    transform: rotate(-5deg);	
 }
 
 .owl:hover  .wing12{
@@ -910,11 +745,11 @@ body {
     -moz-transform: rotate(-2deg);
     -o-transform: rotate(-2deg);
     -ms-transform: rotate(-2deg);
-    transform: rotate(-2deg); 
+    transform: rotate(-2deg);	
 }
 
 .owl:hover  .eyelid{
-    position: relative; 
+    position: relative;	
 }
 
 .btndiv {
@@ -961,34 +796,34 @@ body {
 }
 
 .owlmenu ul, .owlmenu li {
-  margin: 0;
-  padding: 0;
+	margin: 0;
+	padding: 0;
 }
 .owlmenu ul {
-  background: gray;
-  list-style: none;
-  width: 100%;
+	background: gray;
+	list-style: none;
+	width: 100%;
 }
 .owlmenu li {
-  position: relative;
-  width:auto;
+	position: relative;
+	width:auto;
 }
 .owlmenu a {
-  color: #FFFFFF;
-  display: block;
-  font: bold 12px/20px sans-serif;
-  padding: 2vmin 4vmin;
-  text-align: center;
-  text-decoration: none;
-  -webkit-transition: all .25s ease;
-  -moz-transition: all .25s ease;
-  -ms-transition: all .25s ease;
-  -o-transition: all .25s ease;
-  transition: all .25s ease;
-  float:left;
+	color: #FFFFFF;
+	display: block;
+	font: bold 12px/20px sans-serif;
+	padding: 2vmin 4vmin;
+	text-align: center;
+	text-decoration: none;
+	-webkit-transition: all .25s ease;
+	-moz-transition: all .25s ease;
+	-ms-transition: all .25s ease;
+	-o-transition: all .25s ease;
+	transition: all .25s ease;
+	float:left;
 }
 .owlmenu li:hover a {
-  background: #000000;
+	background: #000000;
 }
 
 #sstar {
@@ -1453,13 +1288,3 @@ body {
     height: 0.7em;
   }
 }
-
-
-
-
-
-
-
-
-
-

@@ -2,7 +2,7 @@
   "name": "mostafa-rating",
   "version": "1.0.0",
   "description": "A rating system for mostafa purmehdi, my friend in HEC montreal",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -11,7 +11,12 @@
   "keywords": [
     "rating",
     "HEC",
-    "Montreal"
+    "Montreal",
+    "vote",
+    "Poll",
+    "Candidate",
+    "Candidates",
+    "rate"
   ],
   "devDependencies": {
     "angular": "^1.4.7",

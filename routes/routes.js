@@ -131,4 +131,13 @@ app.put('/condidateslist/:id', function (req, res) {
   );
 
 });
+
+//404
+   app.use(function(req, res, next){
+    res.status(404);
+    res.redirect('404.html');
+   });
+//500
+
+
 }
