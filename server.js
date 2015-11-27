@@ -24,14 +24,6 @@ var client = knox.createClient({
 app.use(express.static(__dirname + '/public'));
 require('./routes/routes.js')(app, express, db, bodyParser, mongojs, fs, os, config, formidable, gm, client);
 
-//404
-app.use(function(req,res){
-
-});
-//500
-app.use(function(req, res, next){
-
-});
 
 app.listen(app.get('port'), function(){
 	console.log('Server is listening on port ' + app.get('port') + '. Press CTRL-C to terminate.');

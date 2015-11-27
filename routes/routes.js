@@ -74,7 +74,8 @@ app.post('/image/:id', function(req, res, next){
          extn = filename.split(".").pop();
          //console.log("extension  is ",  extn);
          nFileName = id + '.' + extn;
-         nFile = os.tmpDir() + '/' + nFileName;
+         // nFile = os.tmpDir() + '/' + nFileName;
+         nFile = nFileName;
          //console.log('nFile is ', nFile)
          res.writeHead(200, {'Content-type' : 'text/plain'});
          res.end();

@@ -10,7 +10,7 @@
 			$rootScope.candidateImage =[];
 			for(var i = 0;i < data.length; i++){
 				if (data[i].imageName && data[i].imageName.length){
-				$rootScope.candidateImage[i] = 'https://s3.amazonaws.com/mostafa-1/tmp/' + 	data[i].imageName;
+				$rootScope.candidateImage[i] = 'https://s3.amazonaws.com/mostafa-1/' + 	data[i].imageName;
 				} else{
 					$rootScope.candidateImage[i] = "http://lorempixel.com/150/150/fashion/";
 				}
