@@ -1,6 +1,6 @@
 "use strict";
 (function(){
-	var candidatescontroller = function($scope, $http, candidatesFactory, $timeout, modalService){
+	var candidatescontroller = function($scope, $http, candidatesFactory, $timeout, modalService, $location, $anchorScroll){
 		var index = 0;
 		$scope.msgs = {};
 		$scope.deactiveUpdateButton = true;
@@ -140,8 +140,16 @@
 							    {stateOff: 'glyphicon-off'}
   								];
 
+  		$scope.goToTop = function(){
+  			      // set the location.hash to the id of
+      				// the element you wish to scroll to.
+     				$location.hash('top');
+
+     				 // call $anchorScroll()
+      				$anchorScroll();
+  		};
 	};
 
-	candidatescontroller.$inject = ['$scope', '$http', 'candidatesFactory', '$timeout', 'modalService'];
+	candidatescontroller.$inject = ['$scope', '$http', 'candidatesFactory', '$timeout', 'modalService', '$location', '$anchorScroll'];
 	angular.module('ratingApp').controller('candidatescontroller', candidatescontroller);
 }());

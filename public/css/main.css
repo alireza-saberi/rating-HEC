@@ -161,6 +161,18 @@ body.skip-animations * {
   opacity:1;
 }
 
+/*back to top*/
+.back-to-top {
+  position: fixed;
+  right: 5px;
+  bottom: 5px;
+/*  visibility: hidden;
+  opacity: 0;*/
+}
+#top{
+  text-decoration: none;
+}
+
 
 /* Owl part*/
 body {

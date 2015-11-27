@@ -19,7 +19,7 @@
              <div class="alert alert-danger col-md-4 col-xs-10 col-md-offset-4" style="position:fixed;top:0;margin:0;z-index:9000" ng-message="newCandidateRepeatError">This Candidate already exist.
             </div> 
          </div>
-        <h1 class="text-center">Candidates Poll</h1>
+        <h1 class="text-center"><a id="top">Candidates Poll </a></h1>
     </div>
     <div class="container">
       <div class="row">
@@ -56,10 +56,13 @@
                 </a>
                 </br></br>
                 <button class="btn btn-danger center" data-ng-click="removeCandide(candidate._id)">Remove</button></br>
-                <button class="btn btn-warning center" data-ng-click="editCandide($index)">Edit</button>
+                <button class="btn btn-warning center" data-ng-click="editCandide($index);goToTop()">Edit</button>
 
             </div>
           </div>
           </div>
       </div>
+          <div class="back-to-top">
+            <a data-ng-click="goToTop()"><i class="fa fa-arrow-up color-violet  fa-4x"></i></a>
+          </div>
     </div>
