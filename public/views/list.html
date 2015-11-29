@@ -1,5 +1,5 @@
     <!-- Main jumbotron for a primary marketing message or call to action -->
-    <div class="jumbotron" data-ng-controller="candidatescontroller">
+    <div class="jumbotron">
       <div class="container">
         <div class="row col-md-offset-4" ng-messages="msgs" role="alert">
           <div class="alert alert-success col-md-4 col-xs-10 col-md-offset-4" style="position:fixed;top:0;margin:0;z-index:9000" ng-message="newCandidatesuccess">{{newCandidateName}} is added successfully!
@@ -19,23 +19,25 @@
              <div class="alert alert-danger col-md-4 col-xs-10 col-md-offset-4" style="position:fixed;top:0;margin:0;z-index:9000" ng-message="newCandidateRepeatError">This Candidate already exist.
             </div> 
          </div>
-        <h1 class="text-center"><a id="top">Candidates Poll </a></h1>
+       <i class="fa fa-globe pull-right">&nbsp;<a data-ng-click="changeLanguage('en')" class="mouse">English</a> | <a data-ng-click="changeLanguage('fr')" class="mouse">French</a></i>  
+        <h1 class="text-center"><a id="top">{{ 'TOPIC' | translate }} </a></h1>
+
     </div>
     <div class="container">
       <div class="row">
         <table class="table col-md-12">
           <thead>
             <tr>
-              <th>Name</th>
-              <th>Action</th>
+              <th>{{ 'NAME' | translate }}</th>
+              <th>{{ 'ACTION' | translate }}</th>
               <th>&nbsp;</th>
             </tr>
           </thead>
           <tbody class="table-striped table-hover">
             <tr>
               <td><input type="text" class="form-control" data-ng-model="newCandidateName"></td>
-              <td><button class="btn btn-primary" data-ng-click="addCandide()">Add Candidate</button></td>
-              <td><button class="btn btn-info" data-ng-disabled="deactiveUpdateButton" data-ng-click="update()">Update</button></td>
+              <td><button class="btn btn-primary" data-ng-click="addCandide()">{{ 'ADDCANDIDE' | translate }}</button></td>
+              <td><button class="btn btn-info" data-ng-disabled="deactiveUpdateButton" data-ng-click="update()">{{ 'UPDATE' | translate }}</button></td>
             </tr>
           </tbody>
         </table>

@@ -41,6 +41,10 @@ hr {
 
 }
 
+a.mouse:hover{
+  cursor: pointer;
+}
+
 /* for input file button */
 .btn-file {
     position: relative;

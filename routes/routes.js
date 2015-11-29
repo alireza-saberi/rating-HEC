@@ -6,7 +6,6 @@ app.use(bodyParser.json());
 app.get('/condidateslist', function (req, res) {
 	console.log('Server: I get a GET request');
 	db.candidateList.find(function (err, docs) {
-    //console.log(docs);
     res.json(docs);
   })
   });
