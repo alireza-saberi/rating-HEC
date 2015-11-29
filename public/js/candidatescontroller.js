@@ -1,13 +1,13 @@
 "use strict";
 (function(){
-	var candidatescontroller = function($scope, $http, candidatesFactory, $timeout, modalService, $location, $anchorScroll, $translate){
+	var candidatescontroller = function($scope, $http, candidatesFactory, $timeout, modalService, $location, $anchorScroll, languageFactory){
 		var index = 0;
 		$scope.msgs = {};
 		$scope.deactiveUpdateButton = true;
 		$scope.animationsEnabled = true;
-		$scope.changeLanguage = function (key) {
-				$translate.use(key);
-  		};
+		$scope.changeLanguage = function(key){
+			languageFactory.changeLanguage(key);
+		}
 		//geting data related codes
 		var refresh = function(){candidatesFactory.get().success(function(data){
 			$scope.candidateList = data;
@@ -153,6 +153,6 @@
   		};
 	};
 
-	candidatescontroller.$inject = ['$scope', '$http', 'candidatesFactory', '$timeout', 'modalService', '$location', '$anchorScroll', '$translate'];
+	candidatescontroller.$inject = ['$scope', '$http', 'candidatesFactory', '$timeout', 'modalService', '$location', '$anchorScroll', 'languageFactory'];
 	angular.module('ratingApp').controller('candidatescontroller', candidatescontroller);
 }());

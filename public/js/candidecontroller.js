@@ -1,6 +1,6 @@
 "use strict";
 (function(){
-	var candidatecontroller = function($routeParams, $scope, $http, Upload, candidatesFactory, $location){
+	var candidatecontroller = function($routeParams, $scope, $http, Upload, candidatesFactory, $location, languageFactory){
     var candiateIndex = $routeParams.candiateIndex;
     var refresh = function(){
       $http.get('/condidateslist').success(function(data){
@@ -70,6 +70,6 @@
       };
 	};
 
-	candidatecontroller.$inject = ['$routeParams', '$scope', '$http', 'Upload', 'candidatesFactory', '$location'];
+	candidatecontroller.$inject = ['$routeParams', '$scope', '$http', 'Upload', 'candidatesFactory', '$location', 'languageFactory'];
 	angular.module('ratingApp').controller('candidatecontroller', candidatecontroller);
 }());

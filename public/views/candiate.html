@@ -10,29 +10,29 @@
         <table class="table">
           <thead>
             <tr>
-              <th>Feature</th>
-              <th>Rate</th>
+              <th>{{ 'FEATURE' | translate }}</th>
+              <th>{{ 'RATE' | translate }}</th>
             </tr>
           </thead>
           <tbody class="table-striped table-hover">
             <tr>
-              <td>Knowledge</td>
+              <td>{{ 'KNOWLEDGE' | translate }}</td>
               <td><rating ng-model="candide.subrates.item1" max="7" on-hover="hoveringOver(value)" on-leave="overStar = null" titles="['-3','-2','-1', '0', '1', '2', '3']" class="color-yellow"></rating></td>
             </tr>
             <tr>
-              <td>Smartness</td>
+              <td>{{ 'SMARTNESS' | translate }}</td>
               <td>
                 <rating ng-model="candide.subrates.item2" max="7" on-hover="hoveringOver(value)" on-leave="overStar = null" titles="['-3','-2','-1', '0', '1', '2', '3']" class="color-yellow"></rating>
               </td>
             </tr>
             <tr>
-              <td>Speed</td>
+              <td>{{ 'SPEED' | translate }}</td>
               <td>
                 <rating ng-model="candide.subrates.item3" max="7" on-hover="hoveringOver(value)" on-leave="overStar = null" titles="['-3','-2','-1', '0', '1', '2', '3']" class="color-yellow"></rating>
               </td>
             </tr>
             <tr>
-              <td>Sexiness</td>
+              <td>{{ 'SEXINESS' | translate }}</td>
               <td>
                 <rating ng-model="candide.subrates.item4" max="7" on-hover="hoveringOver(value)" on-leave="overStar = null" titles="['-3','-2','-1', '0', '1', '2', '3']" class="color-yellow"></rating>
               </td>
@@ -42,10 +42,10 @@
          <div class="btn-group pull-right">
             <button type="file" ngf-select="uploadFiles($file, $invalidFiles)"
                   accept="image/*" class="btn btn-primary">
-                   Select File
+                   {{ 'UPLOAD' | translate }}
             </button>
-            <button class="btn btn-success" data-ng-click="save()">Submit</button>
-            <a href="#/"><button class="btn btn-danger">Cancel</button></a>
+            <button class="btn btn-success" data-ng-click="save()">{{ 'SUBMIT' | translate }}</button>
+            <a href="#/"><button class="btn btn-danger">{{ 'CANCEL' | translate }}</button></a>
         </div>
     </div>
   
