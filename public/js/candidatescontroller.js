@@ -146,11 +146,19 @@
   		$scope.goToTop = function(){
   			      // set the location.hash to the id of
       				// the element you wish to scroll to.
-     				$location.hash('top');
+	     				// $location.hash('top');
 
-     				 // call $anchorScroll()
-      				$anchorScroll();
+     				//  // call $anchorScroll()
+      			// 	$anchorScroll();
+      			angular.element($('html,body')).animate({scrollTop:0},'slow');
+      			return false;
   		};
+  		if ( (angular.element($(window)).height() + 100) < angular.element($(document)).height() ) {
+   				 angular.element($('#back-to-top')).removeClass('hidden').affix({
+      		 	 // how far to scroll down before link "slides" into view
+        		offset: {top:100}
+   			 });
+			}
 	};
 
 	candidatescontroller.$inject = ['$scope', '$http', 'candidatesFactory', '$timeout', 'modalService', '$location', '$anchorScroll', 'languageFactory'];

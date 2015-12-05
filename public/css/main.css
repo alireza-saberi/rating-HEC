@@ -170,6 +170,11 @@ body.skip-animations * {
   position: fixed;
   right: 5px;
   bottom: 5px;
+  margin: 0;
+  width: 70px;
+  height: 70px;
+  z-index: 100;
+  display: none;
 /*  visibility: hidden;
   opacity: 0;*/
 }
