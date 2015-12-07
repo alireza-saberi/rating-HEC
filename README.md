@@ -16,6 +16,7 @@ You can add, edit, remove, update and vote for each candiates based on four fact
 - [Express](http://expressjs.com/), [Knox for AWS](https://github.com/Automattic/knox), [formiable for getting an image in the body of POST request](https://www.npmjs.com/package/formidable)
 - [MongoDB](https://www.mongodb.org/), [Mongojs for conneting](https://github.com/mafintosh/mongojs)
 - [graphicsmagick](http://www.graphicsmagick.org/) for image processing in the server side
+- [Facebook social media plug-in](https://developers.facebook.com/docs/plugins): for like and share
 
 ## How to make it work on your machine (To Mostafa)
 - Download ZIP
