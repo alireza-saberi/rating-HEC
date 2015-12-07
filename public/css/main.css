@@ -36,6 +36,11 @@ hr {
 	margin: 0 auto;
 }
 
+footer {
+  padding: 0px 10px 10px 10px;
+  
+}
+
 .nav, .pagination, .carousel, .panel-title a { 
 	cursor: pointer; 
 
