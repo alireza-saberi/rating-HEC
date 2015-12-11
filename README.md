@@ -32,3 +32,7 @@ You can add, edit, remove, update and vote for each candiates based on four fact
 - You have for get configuration directory from me separately.
 - I have to update uploading image module later, which I had some difficulty making it last night,
 - I will modify more after these interviews.
+
+## Updates
+- I have leanred TDD, and BDD recently
+- I wont be TDD if I add tests now, but I will add some tests on a branch for the sake practice in the upcoming weekend.
