@@ -35,4 +35,4 @@ You can add, edit, remove, update and vote for each candiates based on four fact
 
 ## Updates
 - I have leanred TDD, and BDD recently
-- I wont be TDD if I add tests now, but I will add some tests on a branch for the sake practice in the upcoming weekend.
+- It wont be TDD if I add tests now, but I will add some tests on a branch for the sake practice in the upcoming weekend.
