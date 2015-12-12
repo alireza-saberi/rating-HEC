@@ -1,0 +1,70 @@
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="jumbotron">
+      <div class="container">
+        <div class="row col-md-offset-4" ng-messages="msgs" role="alert">
+          <div class="alert alert-success col-md-4 col-xs-10 col-md-offset-4" style="position:fixed;top:0;margin:0;z-index:9000" ng-message="newCandidatesuccess">{{newCandidateName}} is added successfully!
+          </div>
+            <div class="alert alert-danger col-md-4 col-xs-10 col-md-offset-4" style="position:fixed;top:0;margin:0;z-index:9000" ng-message="newCandidatesuccess">Can NOT add {{newCandidateName}}
+          </div>
+            <div class="alert alert-success col-md-4 col-xs-10 col-md-offset-4" style="position:fixed;top:0;margin:0;z-index:9000" ng-message="updateCandidatesuccess">{{newCandidateName}} is updated successfully.
+            </div>
+            <div class="alert alert-danger col-md-4 col-xs-10 col-md-offset-4" style="position:fixed;top:0;margin:0;z-index:9000" ng-message="updateCandidateError">Can NOT update {{newCandidateName}}.
+            </div>
+            <div class="alert alert-success col-md-4 col-xs-10 col-md-offset-4" style="position:fixed;top:0;margin:0;z-index:9000" ng-message="deleteCandidatesuccess">Candidate is removed successfully.
+            </div>
+            <div class="alert alert-danger col-md-4 col-xs-10 col-md-offset-4" style="position:fixed;top:0;margin:0;z-index:9000" ng-message="deleteCandidateError">Can NOT remove candidate.
+            </div> 
+           <div class="alert alert-danger col-md-4 col-xs-10 col-md-offset-4" style="position:fixed;top:0;margin:0;z-index:9000" ng-message="updateCandidateError2">Empty candidate name is incorrect.
+            </div>
+             <div class="alert alert-danger col-md-4 col-xs-10 col-md-offset-4" style="position:fixed;top:0;margin:0;z-index:9000" ng-message="newCandidateRepeatError">This Candidate already exist.
+            </div> 
+         </div>
+       <i class="fa fa-globe pull-right">&nbsp;<a data-ng-click="changeLanguage('en')" class="mouse">English</a> | <a data-ng-click="changeLanguage('fr')" class="mouse">French</a></i>  
+        <h1 class="text-center" id="top">{{ 'TOPIC' | translate }}</h1>
+
+    </div>
+    <div class="container">
+      <div class="row">
+        <table class="table col-md-12">
+          <thead>
+            <tr>
+              <th>{{ 'NAME' | translate }}</th>
+              <th>{{ 'ACTION' | translate }}</th>
+              <th>&nbsp;</th>
+            </tr>
+          </thead>
+          <tbody class="table-striped table-hover">
+            <tr>
+              <td><input type="text" class="form-control" data-ng-model="newCandidateName"></td>
+              <td><button class="btn btn-primary" data-ng-click="addCandide()">{{ 'ADDCANDIDE' | translate }}</button></td>
+              <td><button class="btn btn-info" data-ng-disabled="deactiveUpdateButton" data-ng-click="update()">{{ 'UPDATE' | translate }}</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="row">
+          <div data-ng-repeat="candidate in candidateList" class="col-xs-12 col-md-4 repeat-animation">
+            <div class="panel panel-default">
+            <div class="panel-heading text-center">
+              <a href="#/candidate/{{$index}}">{{candidate.name}} <br/>
+              </a>
+            </div>
+            <div class="panel-body text-center ">
+                <a href="#/candidate/{{$index}}" style="text-decoration:none">
+                  <img ng-src="{{candidateImage[$index]}}" class="img-circle center" width="150px" height="150px">
+                  <h3 class="text-center">Votes: {{candidate.totalVote}}</h3>
+                    <rating class="color-yellow" ng-model="candidate.overAllRate" max="7" readonly="true" on-hover="hoveringOver(value)" on-leave="overStar = null" titles="['-3','-2','-1', '0', '1', '2', '3']">
+                    </rating>
+                </a>
+                </br></br>
+                <button class="btn btn-danger center" data-ng-click="removeCandide(candidate._id)">{{ 'REMOVE' | translate }}</button></br>
+                <button class="btn btn-warning center" data-ng-click="editCandide($index);goToTop()">{{ 'EDIT' | translate }}</button>
+
+            </div>
+          </div>
+          </div>
+      </div>
+          <div class="back-to-top" style="display:inline;" class="hidden">
+            <a data-ng-click="goToTop()"><i class="fa fa-arrow-up color-violet  fa-4x"></i></a>
+          </div>
+    </div>

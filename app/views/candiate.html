@@ -1,0 +1,51 @@
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div data-ng-controller="candidatescontroller">
+    <div class="jumbotron">
+      <div class="container">
+        <h1 class="text-center">{{candide.name}}</h1>
+        <img id="preview" ng-src="{{imageName}}" width="150px" height="150px" class="img-circle center"></img>
+      </div>
+    </div>
+    <div class="container">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>{{ 'FEATURE' | translate }}</th>
+              <th>{{ 'RATE' | translate }}</th>
+            </tr>
+          </thead>
+          <tbody class="table-striped table-hover">
+            <tr>
+              <td>{{ 'KNOWLEDGE' | translate }}</td>
+              <td><rating ng-model="candide.subrates.item1" max="7" on-hover="hoveringOver(value)" on-leave="overStar = null" titles="['-3','-2','-1', '0', '1', '2', '3']" class="color-yellow"></rating></td>
+            </tr>
+            <tr>
+              <td>{{ 'SMARTNESS' | translate }}</td>
+              <td>
+                <rating ng-model="candide.subrates.item2" max="7" on-hover="hoveringOver(value)" on-leave="overStar = null" titles="['-3','-2','-1', '0', '1', '2', '3']" class="color-yellow"></rating>
+              </td>
+            </tr>
+            <tr>
+              <td>{{ 'SPEED' | translate }}</td>
+              <td>
+                <rating ng-model="candide.subrates.item3" max="7" on-hover="hoveringOver(value)" on-leave="overStar = null" titles="['-3','-2','-1', '0', '1', '2', '3']" class="color-yellow"></rating>
+              </td>
+            </tr>
+            <tr>
+              <td>{{ 'SEXINESS' | translate }}</td>
+              <td>
+                <rating ng-model="candide.subrates.item4" max="7" on-hover="hoveringOver(value)" on-leave="overStar = null" titles="['-3','-2','-1', '0', '1', '2', '3']" class="color-yellow"></rating>
+              </td>
+            </tr>                                
+          </tbody>
+        </table>
+         <div class="btn-group pull-right">
+            <button type="file" ngf-select="uploadFiles($file, $invalidFiles)"
+                  accept="image/*" class="btn btn-primary">
+                   {{ 'UPLOAD' | translate }}
+            </button>
+            <button class="btn btn-success" data-ng-click="save()">{{ 'SUBMIT' | translate }}</button>
+            <a href="#/"><button class="btn btn-danger">{{ 'CANCEL' | translate }}</button></a>
+        </div>
+    </div>
+  
