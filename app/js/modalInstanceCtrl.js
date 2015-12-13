@@ -1,4 +1,5 @@
 (function(){
+	"use strict";
 	var ModalInstanceCtrl = function($scope, candidatesFactory, $uibModalInstance){
 		 $scope.ok = function () {
 		 							if($scope.candidateList && $scope.candidateList.length > 1){

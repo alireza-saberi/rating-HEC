@@ -1,5 +1,5 @@
-"use strict";
 (function(){
+"use strict";
 	var app = angular.module('ratingApp', ['ngRoute', 'ui.bootstrap', 'ngMessages', 'ngFileUpload', 'ngAnimate', 'pascalprecht.translate']);
 	app.config(function($routeProvider, $translateProvider){
 		$routeProvider

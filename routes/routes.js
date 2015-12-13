@@ -7,7 +7,7 @@ app.get('/condidateslist', function (req, res) {
 	console.log('Server: I get a GET request');
 	db.candidateList.find(function (err, docs) {
     res.json(docs);
-  })
+  });
   });
 
 // GET a candiate
@@ -112,7 +112,7 @@ app.post('/image/:id', function(req, res, next){
                     });
               req.end(buffer);
             });
-            })
+            });
         });
      });
 
@@ -141,4 +141,4 @@ app.put('/condidateslist/:id', function (req, res) {
 //500
 
 
-}
+};

@@ -26,7 +26,8 @@
     "express": "^4.13.3",
     "formidable": "^1.0.17",
     "gm": "^1.21.1",
-    "gulp": "^3.9.0",
+    "grunt": "^0.4.5",
+    "grunt-contrib-jshint": "^0.11.3",
     "knox": "^0.9.2",
     "mongojs": "^1.4.1"
   },

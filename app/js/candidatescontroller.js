@@ -1,5 +1,5 @@
-"use strict";
 (function(){
+"use strict";
 	var candidatescontroller = function($scope, $http, candidatesFactory, $timeout, modalService, $location, $anchorScroll, languageFactory){
 		var index = 0;
 		$scope.msgs = {};
@@ -7,7 +7,7 @@
 		$scope.animationsEnabled = true;
 		$scope.changeLanguage = function(key){
 			languageFactory.changeLanguage(key);
-		}
+		};
 		//geting data related codes
 		var refresh = function(){candidatesFactory.get().success(function(data){
 			$scope.candidateList = data;
@@ -21,7 +21,8 @@
 			}
 		}).error(function(){
 			console.log("Sorry, can not reach the server");
-		})};
+		});
+		};
 		refresh();
 
 		// adding a new candidate

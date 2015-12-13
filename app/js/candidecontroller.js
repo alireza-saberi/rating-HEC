@@ -1,5 +1,5 @@
-"use strict";
 (function(){
+"use strict";
 	var candidatecontroller = function($routeParams, $scope, $http, Upload, candidatesFactory, $location, languageFactory){
     var candiateIndex = $routeParams.candiateIndex;
     var refresh = function(){
@@ -15,8 +15,8 @@
       }).error(function(error){
         console.log("Cant find contact information");
       }); 
-    }
-    refresh()
+    };
+    refresh();
 		$scope.hoveringOver = function(value) {
 			    $scope.overStar = value;
 			    $scope.percent = 100 * (value / 7);
@@ -43,7 +43,7 @@
   			$scope.candidateList[parseInt(candiateIndex)] = $scope.candide;
         candidatesFactory.putSingleCandide($scope.candidateList[parseInt(candiateIndex)]._id, $scope.candide);
         $location.path('/');
-  		}
+  		};
   		// image uploading
   		$scope.uploadFiles = function(file, errFiles) {
         console.log(file);
