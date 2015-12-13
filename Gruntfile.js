@@ -1,10 +1,20 @@
 module.exports = function(grunt){
 	grunt.initConfig({
 		jshint: {
-			targert: {
-				options:{'-W083': true},
-				src:['*.js', 'routes/*.js', 'app/js/*.js']
-			} 
+			client: {
+				options:{
+					'-W083': true,
+					browser: true
+				},
+				src:['app/js/*.js']
+			},
+			server: {
+				options:{
+					'-W083': true,
+					node:  true
+				},
+				src:['*.js', 'routes/*.js']				
+			}
 		},
 		watch: {
 		  scripts: {
@@ -14,6 +24,19 @@ module.exports = function(grunt){
 		      		spawn: false,
 		    },
 		  },
+		},
+		uglify:{
+			build: {
+				      files: {
+       							'public/js/services/candidates.js': ['app/js/services/candidates.js'],
+       							'public/js/services/languageFactory.js': ['app/js/services/languageFactory.js'],
+       							'public/js/services/modal.js': ['app/js/services/modal.js'],
+       							'public/js/rateApp.js': ['app/js/rateApp.js'],
+       							'public/js/candidatescontroller.js': ['app/js/candidatescontroller.js'],
+       							'public/js/candidecontroller.js': ['app/js/candidecontroller.js'],
+       							'public/js/modalInstanceCtrl.js':['app/js/modalInstanceCtrl.js']
+      						}
+			}
 		}
 		// jasmine: {
 		// 	targert:{
@@ -25,5 +48,6 @@ module.exports = function(grunt){
 	grunt.loadNpmTasks('grunt-contrib-jshint');
 	// grunt.loadNpmTasks('grunt-contrib-jasmine');
 	grunt.loadNpmTasks('grunt-contrib-watch');
-	grunt.registerTask('default', ['jshint']);
+	grunt.loadNpmTasks('grunt-contrib-uglify');
+	grunt.registerTask('default', ['jshint', 'uglify']);
 };

@@ -21,8 +21,7 @@
 			}
 		}).error(function(){
 			console.log("Sorry, can not reach the server");
-		});
-		};
+		});};
 		refresh();
 
 		// adding a new candidate

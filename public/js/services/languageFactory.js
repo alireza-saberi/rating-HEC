@@ -1,12 +1,1 @@
-(function(){
-	var languageFactory = function($translate){
-		var language = {};
-		language.changeLanguage = function(key){
-			$translate.use(key);
-		};
-		return language;
-
-	};
-	languageFactory.$inject = ['$translate'];
-	angular.module('ratingApp').factory('languageFactory', languageFactory);
-}());
+!function(){var a=function(a){var b={};return b.changeLanguage=function(b){a.use(b)},b};a.$inject=["$translate"],angular.module("ratingApp").factory("languageFactory",a)}();
