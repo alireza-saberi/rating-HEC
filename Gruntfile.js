@@ -37,7 +37,17 @@ module.exports = function(grunt){
        							'public/js/modalInstanceCtrl.js':['app/js/modalInstanceCtrl.js']
       						}
 			}
-		}
+		},
+		sass: {                               
+    			dist: {                            
+      					options: {                        
+        							style: 'expanded'
+      							},
+      			files: {                          
+        				'public/css/main.css': 'app/css/main.scss'
+      					}
+    					}
+  			 }
 		// jasmine: {
 		// 	targert:{
 		// 		src: ['app/js/*.js', 'app/js/services/*.js']
@@ -49,5 +59,6 @@ module.exports = function(grunt){
 	// grunt.loadNpmTasks('grunt-contrib-jasmine');
 	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-contrib-uglify');
-	grunt.registerTask('default', ['jshint', 'uglify']);
+	grunt.loadNpmTasks('grunt-contrib-sass');
+	grunt.registerTask('default', ['jshint', 'uglify', 'sass']);
 };
