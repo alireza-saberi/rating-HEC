@@ -47,7 +47,14 @@ module.exports = function(grunt){
         				'public/css/main.css': 'app/css/main.scss'
       					}
     					}
-  			 }
+  			 },
+  		cssmin: {
+  			target: {
+  				files:{
+  					'public/css/main.css':'public/css/main.css'
+  				}
+  			}
+  		}
 		// jasmine: {
 		// 	targert:{
 		// 		src: ['app/js/*.js', 'app/js/services/*.js']
@@ -60,5 +67,6 @@ module.exports = function(grunt){
 	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-contrib-sass');
-	grunt.registerTask('default', ['jshint', 'uglify', 'sass']);
+	grunt.loadNpmTasks('grunt-contrib-cssmin');
+	grunt.registerTask('default', ['jshint', 'uglify', 'sass', 'cssmin']);
 };
