@@ -18,8 +18,8 @@ module.exports = function(grunt){
 		},
 		watch: {
 		  scripts: {
-		    		files: ['*.js', 'routes/*.js', 'app/js/*.js'],
-		    		tasks: ['jshint'],
+		    		files: ['*.js', 'routes/*.js', 'app/**/*.*'],
+		    		tasks: ['jshint','uglify', 'sass', 'cssmin'],
 		   options: {
 		      		spawn: false,
 		    },
